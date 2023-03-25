@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{{data}}
+
 {% block content %}
     <h1>Welcome to your smart house!</h1>
+    {% for i in data %}
+        <div>{{ i.device_id }} - {{ i.maker }}, {{ i.model }} ({{ i.type }})</div>
+    {% endfor %}
 {% endblock content %}
