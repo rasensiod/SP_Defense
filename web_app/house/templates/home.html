@@ -3,6 +3,14 @@
 
 {% block content %}
     <h1>Welcome to your smart house!</h1>
+
+    <form method="POST" action="/">
+        {% csrf_token %}
+        <input type="text" name="textfield">
+        
+        <button type="submit">Upload text</button>
+    </form>
+
     {% for i in data %}
         <div>{{ i.device_id }} - {{ i.maker }}, {{ i.model }} ({{ i.type }})</div>
     {% endfor %}

@@ -1,0 +1,29 @@
+[
+    {
+      "model":"house.devices",
+      "pk":1,
+      "fields":{
+        "maker": "Apple",
+        "model": "HomePod",
+        "type": "Speaker"
+      }
+    },
+    {
+        "model":"house.devices",
+        "pk":2,
+        "fields":{
+            "maker": "Amazon",
+            "model": "Alexa",
+            "type": "Speaker"
+        }
+    },
+    {
+        "model":"house.devices",
+        "pk":3,
+        "fields":{
+            "maker": "Xiaomi",
+            "model":"AW300",
+            "type": "Camera"
+        }
+    }
+]
