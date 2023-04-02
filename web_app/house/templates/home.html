@@ -4,11 +4,12 @@
 {% block content %}
     <h1>Welcome to your smart house!</h1>
 
+    <h5>Use the text box bellow to find more about device information in your home.</h5>
+
     <form method="POST" action="/">
         {% csrf_token %}
-        <input type="text" name="textfield">
-        
-        <button type="submit">Upload text</button>
+        <input type="text" name="textfield" placeholder="SQL input query" size="60">
+        <button type="submit">Go</button>
     </form>
 
     {% for i in data %}
