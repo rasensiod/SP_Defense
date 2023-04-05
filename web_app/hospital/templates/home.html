@@ -4,16 +4,72 @@
 {% block content %}
     <h1>Welcome to the Smart Hospital</h1>
 
-    <h5>Use the search box bellow to find your patient data.</h5>
+    <img src="https://mc-1bee7015-25f8-4470-9de6-1841-cdn-endpoint.azureedge.net/-/media/mace-dotcom/images/projects/uclh/uclh1.jpg?w=1600&h=900&as=1&crop=1&hash=83E1CE0095ED44FC7B00B4C0FD9E1DDC" alt="Smart Hospital" width="720" height="405">
+
+    <h5><br>Use the search box bellow to find your patient data.</h5>
 
     <form method="POST" action="/">
         {% csrf_token %}
-        <input type="text" name="textfield" placeholder="Patient Secret ID" size="60">
+        <input type="text" name="textfield" placeholder="Personal Patient ID" size="60">
         <button type="submit">Find Patient</button>
     </form>
 
-    {% for i in data %}
-        <div>{{ i.surname }}, {{ i.name }} ({{ i.secret_id }}) - Condition: {{ i.condition }}, Medication: {{ i.medication }}</div>
-        <div>Contact details: {{ i.email }} | {{ i.address }}</div>
-    {% endfor %}
+
+    <style>
+        .pd-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .pd-table thead tr {
+            background-color: #006d98;
+            color: #ffffff;
+            text-align: left;
+        }
+        .pd-table th,
+        .pd-table td {
+            padding: 12px 15px;
+        }
+        .pd-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        .pd-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        .pd-table tbody tr:last-of-type {
+            border-bottom: 2px solid #006d98;
+        }
+    </style>
+
+
+    <table class="pd-table">
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>Condition</th>
+                <th>Medication</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{ i.secret_id }}</td>
+                    <td>{{ i.surname }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.condition }}</td>
+                    <td>{{ i.medication }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.address }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br><br>
 {% endblock content %}
