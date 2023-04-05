@@ -13,6 +13,7 @@
     </form>
 
     {% for i in data %}
-        <div>{{ i.name }} ({{ i.secret_id }}) - Condition: {{ i.condition }}</div>
+        <div>{{ i.surname }}, {{ i.name }} ({{ i.secret_id }}) - Condition: {{ i.condition }}, Medication: {{ i.medication }}</div>
+        <div>Contact details: {{ i.email }} | {{ i.address }}</div>
     {% endfor %}
 {% endblock content %}

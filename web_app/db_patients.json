@@ -2,25 +2,37 @@
     {
       "model":"hospital.patients",
       "fields":{
-        "secret_id": "ABC12",
-        "name": "Adam Adams",
-        "condition": "Leg injury"
+        "secret_id": 12345,
+        "name": "Adam",
+        "surname": "Adams",
+        "address": "1 Adam Drive",
+        "email": "adam.adams@mail.com",
+        "condition": "Leg injury",
+        "medication": "Painkillers"
       }
     },
     {
       "model":"hospital.patients",
       "fields":{
-        "secret_id": "XYZ89",
-        "name": "John Jones",
-        "condition": "Elbow injury"
+        "secret_id": 23456,
+        "name": "John",
+        "surname": "Jones",
+        "address": "2 John Avenue",
+        "email": "john.jones@mail.com",
+        "condition": "Elbow injury",
+        "medication": "Painkillers"
       }
     },
     {
       "model":"hospital.patients",
       "fields":{
-        "secret_id": "FGH56",
-        "name": "Carl Carlyle",
-        "condition": "Stomach pain"
+        "secret_id": 34567,
+        "name": "Carl",
+        "surname": "Carlyle",
+        "address": "3 Carl Street",
+        "email": "carl.carlyle@mail.com",
+        "condition": "Broken leg",
+        "medication": "Painkillers"
       }
     }
 ]

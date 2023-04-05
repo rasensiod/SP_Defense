@@ -9,7 +9,7 @@ def home(request):
 
     if request.method == 'POST':
         search = request.POST.get('textfield', None)    # raw SQL user input
-        search = ('SELECT * FROM hospital_patients WHERE secret_id= "'+search+'"')
+        search = ('SELECT * FROM hospital_patients WHERE secret_id=' + search)
         search_out = Patients.objects.raw(search)
         return render(request, 'home.html', {'data': search_out})
     else:
