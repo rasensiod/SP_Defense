@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{{data}}
+
+{% block content %}
+    <h1>Welcome to the Smart Hospital</h1>
+
+    <h5>Use the search box bellow to find your patient data.</h5>
+
+    <form method="POST" action="/">
+        {% csrf_token %}
+        <input type="text" name="textfield" placeholder="Patient Secret ID" size="60">
+        <button type="submit">Find Patient</button>
+    </form>
+
+    {% for i in data %}
+        <div>{{ i.name }} ({{ i.secret_id }}) - Condition: {{ i.condition }}</div>
+    {% endfor %}
+{% endblock content %}

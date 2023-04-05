@@ -1,0 +1,26 @@
+[
+    {
+      "model":"hospital.patients",
+      "fields":{
+        "secret_id": "ABC12",
+        "name": "Adam Adams",
+        "condition": "Leg injury"
+      }
+    },
+    {
+      "model":"hospital.patients",
+      "fields":{
+        "secret_id": "XYZ89",
+        "name": "John Jones",
+        "condition": "Elbow injury"
+      }
+    },
+    {
+      "model":"hospital.patients",
+      "fields":{
+        "secret_id": "FGH56",
+        "name": "Carl Carlyle",
+        "condition": "Stomach pain"
+      }
+    }
+]
