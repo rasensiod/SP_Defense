@@ -2,20 +2,13 @@
 {{data}}
 
 {% block content %}
-    <h1>Welcome to the Smart Hospital</h1>
-
-    <img src="https://mc-1bee7015-25f8-4470-9de6-1841-cdn-endpoint.azureedge.net/-/media/mace-dotcom/images/projects/uclh/uclh1.jpg?w=1600&h=900&as=1&crop=1&hash=83E1CE0095ED44FC7B00B4C0FD9E1DDC" alt="Smart Hospital" width="720" height="405">
-
-    <h5><br>Use the search box bellow to find your patient data.</h5>
-
-    <form method="POST" action="/">
-        {% csrf_token %}
-        <input type="text" name="textfield" placeholder="Personal Patient ID" size="60">
-        <button type="submit">Find Patient</button>
-    </form>
-
 
     <style>
+        .button {
+            border: none;
+            color: white;
+            background-color: #5f788a;
+        }
         .pd-table {
             border-collapse: collapse;
             margin: 25px 0;
@@ -43,6 +36,18 @@
         }
     </style>
 
+
+    <h1>Welcome to the Smart Hospital</h1>
+
+    <img src="https://mc-1bee7015-25f8-4470-9de6-1841-cdn-endpoint.azureedge.net/-/media/mace-dotcom/images/projects/uclh/uclh1.jpg?w=1600&h=900&as=1&crop=1&hash=83E1CE0095ED44FC7B00B4C0FD9E1DDC" alt="Smart Hospital" width="720" height="405">
+
+    <h5><br>Use the search box bellow to find your patient data</h5>
+
+    <form method="POST" action="/">
+        {% csrf_token %}
+        <input type="text" name="textfield" placeholder="Personal Patient ID" size="60">
+        <button class="button" type="submit">Find Patient</button>
+    </form>
 
     <table class="pd-table">
         <thead>
