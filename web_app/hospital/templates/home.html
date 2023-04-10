@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {{data}}
+{{security}}
 
 {% block content %}
 
@@ -61,19 +62,35 @@
                 <th>Address</th>
             </tr>
         </thead>
-        <tbody>
-            {% for i in data %}
-                <tr>
-                    <td>{{ i.secret_id }}</td>
-                    <td>{{ i.surname }}</td>
-                    <td>{{ i.name }}</td>
-                    <td>{{ i.condition }}</td>
-                    <td>{{ i.medication }}</td>
-                    <td>{{ i.email }}</td>
-                    <td>{{ i.address }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+        {% if security == 2 %}
+            <tbody>
+                {% for i in data %}
+                    <tr>
+                        <td>{{ i.1 }}</td>
+                        <td>{{ i.3 }}</td>
+                        <td>{{ i.2 }}</td>
+                        <td>{{ i.6 }}</td>
+                        <td>{{ i.7 }}</td>
+                        <td>{{ i.5 }}</td>
+                        <td>{{ i.4 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% else %}
+            <tbody>
+                {% for i in data %}
+                    <tr>
+                        <td>{{ i.secret_id }}</td>
+                        <td>{{ i.surname }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.condition }}</td>
+                        <td>{{ i.medication }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.address }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% endif %}
     </table>
 
     <br><br><br>
