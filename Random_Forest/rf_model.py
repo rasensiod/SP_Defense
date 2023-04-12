@@ -11,17 +11,17 @@ from Module.results_visualization import *
 
 class random_forest:
     def __init__(self):
-        print("===== Construct SVM model with different kernal =====")
+        print("===== Construct rf model  =====")
         self.model = RandomForestClassifier()
 
     def train(self, train_X, train_y):
-        print("===== Training SVM model =====")
+        print("===== Training rf model =====")
         self.model.fit(train_X, train_y)
 
 
 
     def test(self, test_X,test_y, confusion_mat=False):
-        print("===== Test SVM model on test set=====")
+        print("===== Test rf model on test set=====")
         pred_y = self.model.predict(test_X)
         test_y = np.argmax(test_y, axis=1)
         test_accuracy = accuracy_score(test_y,pred_y)
