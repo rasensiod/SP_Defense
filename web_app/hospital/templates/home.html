@@ -50,6 +50,7 @@
         <button class="button" type="submit">Find Patient</button>
     </form>
 
+    {% if data != 0 %}
     <table class="pd-table">
         <thead>
             <tr>
@@ -92,6 +93,7 @@
             </tbody>
         {% endif %}
     </table>
+    {% endif %}
 
     <br><br><br>
 {% endblock content %}
