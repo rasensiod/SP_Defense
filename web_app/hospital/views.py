@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db import connection, DataError, ProgrammingError
 from .models import Patients
 
-security = 0
+security = 2
 
 def home(request):
 
