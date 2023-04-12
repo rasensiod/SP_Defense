@@ -50,49 +50,51 @@
         <button class="button" type="submit">Find Patient</button>
     </form>
 
-    {% if data != 0 %}
-    <table class="pd-table">
-        <thead>
-            <tr>
-                <th>Patient ID</th>
-                <th>Surname</th>
-                <th>Name</th>
-                <th>Condition</th>
-                <th>Medication</th>
-                <th>Email</th>
-                <th>Address</th>
-            </tr>
-        </thead>
-        {% if security == 2 %}
-            <tbody>
-                {% for i in data %}
-                    <tr>
-                        <td>{{ i.1 }}</td>
-                        <td>{{ i.3 }}</td>
-                        <td>{{ i.2 }}</td>
-                        <td>{{ i.6 }}</td>
-                        <td>{{ i.7 }}</td>
-                        <td>{{ i.5 }}</td>
-                        <td>{{ i.4 }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        {% else %}
-            <tbody>
-                {% for i in data %}
-                    <tr>
-                        <td>{{ i.secret_id }}</td>
-                        <td>{{ i.surname }}</td>
-                        <td>{{ i.name }}</td>
-                        <td>{{ i.condition }}</td>
-                        <td>{{ i.medication }}</td>
-                        <td>{{ i.email }}</td>
-                        <td>{{ i.address }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        {% endif %}
-    </table>
+    {% if data == 0 %}
+        <h6><br>No patient matching the ID, please try again</h6>
+    {% else %}
+        <table class="pd-table">
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Surname</th>
+                    <th>Name</th>
+                    <th>Condition</th>
+                    <th>Medication</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            {% if security == 2 %}
+                <tbody>
+                    {% for i in data %}
+                        <tr>
+                            <td>{{ i.1 }}</td>
+                            <td>{{ i.3 }}</td>
+                            <td>{{ i.2 }}</td>
+                            <td>{{ i.6 }}</td>
+                            <td>{{ i.7 }}</td>
+                            <td>{{ i.5 }}</td>
+                            <td>{{ i.4 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            {% else %}
+                <tbody>
+                    {% for i in data %}
+                        <tr>
+                            <td>{{ i.secret_id }}</td>
+                            <td>{{ i.surname }}</td>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.condition }}</td>
+                            <td>{{ i.medication }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.address }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+        </table>
     {% endif %}
 
     <br><br><br>
