@@ -1,6 +1,87 @@
 {% extends "base.html" %}
+{{data}}
+
 {% block content %}
+
+    <style>
+        .button {
+            border: none;
+            color: white;
+            background-color: #5f788a;
+        }
+        .pd-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .pd-table thead tr {
+            background-color: #006d98;
+            color: #ffffff;
+            text-align: left;
+        }
+        .pd-table th,
+        .pd-table td {
+            padding: 12px 15px;
+        }
+        .pd-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        .pd-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        .pd-table tbody tr:last-of-type {
+            border-bottom: 2px solid #006d98;
+        }
+    </style>
+
+
+
     <h1>About Page</h1>
 
-    <h5>Write something here.</h5>
+    <div>
+        This application was created as part of the coursework project for the module ELEC0138 - Security & Privacy at University College London.
+        The application mimics a simple hospital interface for patients and medical professionals to access patient data through a input text box,
+        the contents of which are then used to query a SQL database. Depending on the level of security the user might be able to perform an SQL
+        injection attack or not.
+        <br><br>
+        For more information, please refer to the report associated with this project. The entire database contents are shown below for reference:
+    </div>
+
+
+    <table class="pd-table">
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>Condition</th>
+                <th>Medication</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{ i.secret_id }}</td>
+                    <td>{{ i.surname }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.condition }}</td>
+                    <td>{{ i.medication }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.address }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div><i>Authors: Rafael Asensio, Kexin Ma, Leihao Zhao, Tao Zhang</i></div>
+
+    <br><br>
+
+    <img src="https://2018.igem.org/wiki/images/f/f2/T--UCL--ucle.png" alt="Smart Hospital" width="550" height="150">
+
+    <br><br><br>
 {% endblock content %}

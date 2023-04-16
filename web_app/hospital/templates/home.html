@@ -52,6 +52,8 @@
 
     {% if data == 0 %}
         <h6><br>No patient matching the ID, please try again</h6>
+    {% elif data == 1 %}
+        <h6><br>No patient selected</h6>
     {% else %}
         <table class="pd-table">
             <thead>
