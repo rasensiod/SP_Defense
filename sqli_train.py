@@ -45,7 +45,7 @@ print("Specificity: {:.2f}%".format(tn / (tn + fp) * 100))
 print("Sensitivity: {:.2f}%".format(tp / (tp + fn) * 100))
 
 disp = ConfusionMatrixDisplay(confusion_matrix=confusion_matrix(y_test, y_pred), display_labels=clf.classes_)
-disp.plot()
+disp.plot(cmap=plt.cm.Blues)
 plt.show()
 
 # Save the model and vectoriser object
