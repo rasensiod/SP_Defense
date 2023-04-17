@@ -1,9 +1,10 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from joblib import dump
 from sklearn.svm import SVC
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score, confusion_matrix
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score, confusion_matrix, ConfusionMatrixDisplay
 
 # load dataset
 data = pd.read_csv('Datasets/Modified_SQL_Dataset.csv')
@@ -42,6 +43,10 @@ print("Precision: {:.2f}%".format(precision * 100))
 print("F1-score: {:.2f}%".format(f1 * 100))
 print("Specificity: {:.2f}%".format(tn / (tn + fp) * 100))
 print("Sensitivity: {:.2f}%".format(tp / (tp + fn) * 100))
+
+disp = ConfusionMatrixDisplay(confusion_matrix=confusion_matrix(y_test, y_pred), display_labels=clf.classes_)
+disp.plot()
+plt.show()
 
 # Save the model and vectoriser object
 dump(clf, 'web_app/hospital/sqli_ml/model.joblib')
