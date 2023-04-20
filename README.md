@@ -7,62 +7,89 @@ using both DDoS and SQL injections. Then, in order to protect the confidentialit
 
 
 The final accuracy results is shown in the following table:
-|  | Task A1 | Task A2 | Task B1 | Task B2 |
-| :----:| :----:| :----: |:----: |:----: |
-| CNN1 | 91% | 81% | 100% | 82% |
-| CNN1(VGG) | / | / | / | 70.2% |
-| SVM | 88% | 83% | / | / |
-| SVM(&detector) | 98% | 72% | 60.7% | 71% |
-| SVM(&landmarks) | / | 90% | / | / |
+|  | DDoS attack | SQL injection | 
+| :----:| :----:| :----: |
+| NN | 90% | / | 
+| NN(weight) | 87% | / |
+| Random Forest | 86% | / |
+| SVM | / | 99.3% |
+
 
 ## Role of each file
 The current project structure is shown below
 ```
 .
-├── A1
-│   └── a1.py
-├── A2
-│   └── a2.py
-├── B1
-│   └── b1.py
-├── B2
-│   └── b2.py
+├── DDoS
+│   ├── Dataset
+│   │   └── df_sample.csv
+│   ├── Model
+│   │   └── NN_large.h5
+│   ├── Module
+│   │   ├── __pycache__
+│   │   ├── data_exploration.py
+│   │   ├── data_preprocessing.py
+│   │   ├── notification_sns.py
+│   │   └── results_visualization.py
+│   ├── Neural_Network
+│   │   ├── Base_model.py
+│   │   └── __pycache__
+│   ├── Random_Forest
+│   │   ├── __pycache__
+│   │   └── rf_model.py
+│   ├── Results_img
+│   │   ├── bar_backward_packets.png
+│   │   ├── base_nn_curves.png
+│   │   ├── base_nn_matrix.png
+│   │   ├── base_nn_weighted_curves.png
+│   │   ├── base_nn_weighted_matrix.png
+│   │   ├── heatmap_features.png
+│   │   ├── histogram_label.png
+│   │   ├── notification_mail.jpeg
+│   │   ├── notification_message.jpeg
+│   │   ├── pie_gragh_label.png
+│   │   ├── rf_matrix.png
+│   │   └── stem_fwd_packets.png
+│   ├── main.py
+│   └── test.py
 ├── Datasets
-├── Modules
-│   ├── feature_extraction.py
-│   ├── plot_result.py
-│   ├── pre_processing_A.py
-│   └── pre_processing_generator.py
-├── dlib_face_recognition_resnet_model_v1.dat
-├── main.py
-├── results_img
-│   ├── emotion_detection_cnn.jpg
-│   ├── eye_color_cnn.jpg
-│   ├── face_shape_cnn.jpg
-│   └── gender_detection_cnn.jpg
-└── shape_predictor_68_face_landmarks.dat
+│   └── Modified_SQL_Dataset.csv
+├── README.md
+├── model_training.ipynb
+├── sqli_train.py
+└── web_app
+    ├── db.sqlite3
+    ├── db_patients.json
+    ├── hospital
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── migrations
+    │   ├── models.py
+    │   ├── sqli_alert
+    │   ├── sqli_ml
+    │   ├── static
+    │   ├── templates
+    │   ├── tests.py
+    │   ├── urls.py
+    │   └── views.py
+    ├── manage.py
+    └── web_app
+        ├── __init__.py
+        ├── __pycache__
+        ├── asgi.py
+        ├── settings.py
+        ├── urls.py
+        └── wsgi.py
 ```
 
-**main.py**: Contains all the core functions that will be executed sequentially for data pre-processing, model instance creation, model training, result prediction, evaluation and other modules. 
+**DDoS**: Contains all the process to do data preprocessing, data exploration, model training, model evulation, and notification module on DDoS attack.  
 
-**a1.py**: Contains two classes that can perform task A1, the CNN class and the SVM class, the CNN class contains initialization methods (for building the model), training methods (training of the model, plotting of accuracy and loss value curves), testing methods (result prediction, confusion matrix plotting). 
+**sql_train**: Contains the process of traning the svm model on sql injection dataset. 
 
-**a2.py**: Contains two classes that can perform task A2, the CNN class and the SVM class, the CNN class contains initialization methods (for building the model), training methods (training of the model, plotting of accuracy and loss value curves), testing methods (result prediction, confusion matrix plotting). 
+**web_app**: Contains all the process to build a website. 
 
-**b1.py**: Contains two classes that can perform task B1, the CNN class and the SVM class, the CNN class contains initialization methods (for building the model), training methods (training of the model, plotting of accuracy and loss value curves), testing methods (result prediction, confusion matrix plotting). 
 
-**b2.py**: Contains two classes that can perform task B2, the CNN class and the SVM class, the CNN class contains initialization methods (for building the model), training methods (training of the model, plotting of accuracy and loss value curves), testing methods (result prediction, confusion matrix plotting). 
-
-**feature_extraction.py**: For scenarios using the SVM model, a pre-feature extraction is performed, calling the face detector in the dlib library to identify faces and return a rectangle with faces and landmarks.
-
-**pre_processing_A.py**: Perform image processing such as normalization and greyscaling on the image data in Task A. Divide the training set, validation set and test set.  
-
-**pre_processing_generator.py**: Perform image processing such as normalization and greyscaling on the image data in Task A. Divide the training set, validation set and test set. Note that when dividing the test and training sets, the generator needs different paths for the training data and the test data, so it needs to randomly select 1000 images and put them in the new path, and delete them from the original path.
-**plot_result.py**: Plotting accuracy results and loss value curves, plotting prediction result confusion matrix.
-
-**shape_predictor_68_face_landmarks.dat**: shape_predictor() is a tool that takes in an image region containing some object and outputs a set of point locations that define the pose of the object. 
-
-**dlib_face_recognition_resnet_model_v1.dat**: This model is a ResNet network with 29 conv layers. It's essentially a version of the ResNet-34 network from the paper Deep Residual Learning for Image Recognition by He, Zhang, Ren, and Sun with a few layers removed and the number of filters per layer reduced by half. The network was trained from scratch on a dataset of about 3 million faces.
 
 ## How to start
 
