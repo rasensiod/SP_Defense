@@ -92,15 +92,20 @@ The current project structure is shown below
 
 
 ## How to start
-
-If all the dependencies required for the current project are already installed, you can run main.py after placing the dataset in a blank Datasets directory.
+If all the dependencies required for the current project are already installed, you can run manage.py to start a local website.  
 ```
-python main.py
+python ./web_app/manage.py runserver
 ```
-The program will read in the sample images from the Datasets directory and start pre-processing, model building, model training, prediction and evaluation. 
+You can also change the security level in views.py to adjust defense level on SQL injection
+In terms of DDoS attack model training, you could run the main.py to automatically do data preprocessing and model training.
+```
+python ./DDoS/main.py
+```
+You can also run the test.py to veirfy the performance of the model about identifying DDoS attack and it will trigger notification service automatically.
+```
+python ./DDoS/test.py
+```
 
-**Note**: when you copy the datasets to the Datasets directory, you only need to copy the cartoon_set and celeba folders. The program will automatically divide the test set from the above datasets and create a new directory to store the test data for Task B2. The ratio of training set, validation set and test set is 8:1:1. 
-
-Due to the monthly limitation of Git LFS uploading large files, it is not possible to upload the trained model files to github, so it will take more time to train each task when using the CNN model. Specific hyperparameters can be found at the end instruction.
+Due to the monthly limitation of Git LFS uploading large files, it is not possible to upload the dataset to github, so you need to copy the datasets to the Datasets directory. 
 
 
